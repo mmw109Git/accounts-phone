@@ -1,10 +1,10 @@
 Package.describe({
-    name         : 'okland:accounts-phone',
-    version      : '0.0.9',
+    name         : 'saffron:accounts-phone',
+    version      : '0.1.0',
     // Brief, one-line summary of the package.
     summary      : 'A login service based on mobile phone number for Meteor',
     // URL to the Git repository containing the source code for this package.
-    git          : 'https://github.com/okland/accounts-phone',
+    git          : 'https://github.com/mmw109Git/accounts-phone',
     // By default, Meteor will default to using README.md for documentation.
     // To avoid submitting documentation, set this field to null.
     documentation: null
@@ -16,11 +16,11 @@ Npm.depends({
     "stream-buffers": "0.2.5"});
 
 Package.onUse(function (api) {
-    api.use('npm-bcrypt@=0.7.7', 'server');
+    api.use('npm-bcrypt@0.7.7', 'server');
 
-    api.use('accounts-base@1.0.2', ['client', 'server']);
+    api.use('accounts-base@1.2.0', ['client', 'server']);
     // Export Accounts (etc) to packages using this one.
-    api.imply('accounts-base@1.0.2', ['client', 'server']);
+    api.imply('accounts-base@1.2.0', ['client', 'server']);
     api.use('srp@1.0.2', ['client', 'server']);
     api.use('sha@1.0.2', ['client', 'server']);
     api.use('email@1.0.5', ['server']);
@@ -30,16 +30,18 @@ Package.onUse(function (api) {
     api.use('check@1.0.4');
     api.use('underscore@1.0.2');
     api.use('ddp@1.0.14', ['client', 'server']);
+    
     api.addFiles('sms_server.js', 'server');
     api.addFiles('phone_server.js', 'server');
-    api.addFiles('phone_client.js', 'client');
+/*    api.addFiles('phone_client.js', 'client');
 
     api.export('SMS', 'server');
     api.export('SMSTest', 'server', {testOnly: true});
+*/
 });
 
 Package.onTest(function (api) {
-    api.use(['okland:accounts-phone', 'tinytest', 'test-helpers', 'tracker',
+    api.use(['saffron:accounts-phone', 'tinytest', 'test-helpers', 'tracker',
         'accounts-base', 'random', 'underscore', 'check',
         'ddp']);
     api.addFiles('phone_tests_setup.js', 'server');
